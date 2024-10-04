@@ -7,7 +7,18 @@
     "start": "npx tsc -w",
     "dev": "npx nodemon",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "prepare": "husky install",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx pretty-quick --staged ng lint ng test",
+      "pre-push": "ng build --aot true"
+    }
   },
   "author": "Tri Krama",
   "license": "ISC",
@@ -23,6 +34,9 @@
     "eslint-plugin-promise": "^6.6.0",
     "eslint-plugin-standard": "^5.0.0",
     "globals": "^15.10.0",
+    "husky": "^9.1.6",
+    "prettier": "3.3.3",
+    "pretty-quick": "^4.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.8.0"
